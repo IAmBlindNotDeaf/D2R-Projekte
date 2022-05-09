@@ -1,0 +1,15 @@
+{
+  "name": "d2r-projekte",
+  "version": "1.0.0",
+  "description": "tracks dclone status",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^13.6.0",
+    "ohmyfetch": "^0.4.15"
+  }
+}

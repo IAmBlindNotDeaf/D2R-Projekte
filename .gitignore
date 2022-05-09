@@ -1,0 +1,5 @@
+node_modules
+config.json
+storage.json
+workspace.code-workspace
+.vscode
