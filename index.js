@@ -71,12 +71,10 @@ async function run() {
         {
           title: `SC-Ladder DClone Status: ${progress}/6 auf ${region_name[region]}`,
           color: 7440858,
-          footer: { text: "Data courtesy of diablo2.io" },  
+          footer: { text: "Data courtesy of diablo2.io" },
         },
       ],
     };
-
-    
 
     // DClone counter & notification
     if (
