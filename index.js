@@ -61,12 +61,11 @@ async function run() {
     const { progress, region, timestamped } = dclone_progress_data[i];
     console.log(progress, region, timestamped);
 
-    // Webhook embed template
+    // Webhook template
     const webhook_message = {
       username: "DClone",
       avatarURL:
         "https://diablo2.io/styles/zulu/theme/images/items/diablo_hell_graphic.png",
-      // content: `DClone ist gespawnt. Ich hoffe du hast es noch rechtzeitig geschafft.`,
       embeds: [
         {
           title: `SC-Ladder DClone Status: ${progress}/6 auf ${region_name[region]}`,
@@ -76,7 +75,6 @@ async function run() {
       ],
     };
 
-    // DClone counter & notification
     if (
       (progress == 1 && progress_state[region] == 5) ^
         (progress == 1 && progress_state[region] == 6) &&
@@ -86,7 +84,6 @@ async function run() {
         counter_state[region]
       );
 
-      // Dclone counter
       webhook_message_counter.embeds[0].description = String(
         parseInt(webhook_message_counter.embeds[0].description) + 1
       );
@@ -94,11 +91,10 @@ async function run() {
         embeds: [webhook_message_counter.embeds[0]],
       });
 
-      // Updating states
       progress_state[region] = progress;
       timestamped_state[region] = parseInt(timestamped);
 
-      //
+      webhook_message.content = `DClone ist gespawnt. Ich hoffe du hast es noch rechtzeitig geschafft.`;
       const { id } = await webhook.send(webhook_message);
 
       if (!storage[region]) storage[region] = [];
@@ -121,26 +117,8 @@ async function run() {
 
     if (progress > progress_state[region]) {
       progress_state[region] = progress;
-      const webhook_message = {
-        username: "DClone",
-        avatarURL:
-          "https://diablo2.io/styles/zulu/theme/images/items/diablo_hell_graphic.png",
-        content: progress > 2 ? "<@&903980931264692295>" : null,
-        embeds: [
-          {
-            title: `SC-Ladder DClone Status: ${progress}/6 auf ${region_name[region]}`,
-            color: 7440858,
-            description: "",
-            timestamp: "",
-            author: {},
-            image: {},
-            thumbnail: {},
-            footer: { text: "Data courtesy of diablo2.io" },
-            fields: [],
-          },
-        ],
-        components: [],
-      };
+
+      webhook_message.content = progress > 2 ? "<@&903980931264692295>" : null;
       const { id } = await webhook.send(webhook_message);
       console.log("sent", id);
 
@@ -154,3 +132,16 @@ async function run() {
 }
 setInterval(run, 1 * 60 * 1000);
 run();
+
+// Auto Update
+// const express = require("express");
+// const app = express();
+// const port = 3000;
+
+// app.get("/", (req, res) => {
+//   res.json(storage);
+// });
+
+// app.listen(port, () => {
+//   console.log(`Example app listening on port ${port}`);
+// });

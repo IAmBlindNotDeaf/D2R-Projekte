@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^13.6.0",
+    "express": "^4.18.1",
     "ohmyfetch": "^0.4.15"
   }
 }
