@@ -118,7 +118,7 @@ async function run() {
     if (progress > progress_state[region]) {
       progress_state[region] = progress;
 
-      webhook_message.content = progress > 2 ? "<@&903980931264692295>" : null;
+      webhook_message.content = progress > 3 ? "<@&903980931264692295>" : null;
       const { id } = await webhook.send(webhook_message);
       console.log("sent", id);
 
