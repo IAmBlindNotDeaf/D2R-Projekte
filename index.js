@@ -76,8 +76,8 @@ async function run() {
     };
 
     if (
-      (progress == 1 && progress_state[region] == 5) ^
-        (progress == 1 && progress_state[region] == 6) &&
+      progress == 1 &&
+      progress_state[region] > 3 &&
       parseInt(timestamped) > timestamped_state[region] + 3600
     ) {
       const webhook_message_counter = await webhook.fetchMessage(
